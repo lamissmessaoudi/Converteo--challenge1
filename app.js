@@ -1,13 +1,12 @@
 const express = require("express");
 const app = express();
 var bodyParser = require('body-parser');
-const get  = require('./getData') ;
+const get  = require('./controller/getData') ;
 
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(bodyParser.text());
 
 app.get("/", async (req, res) => {
   console.log('OPEN ROOT !');

@@ -14,10 +14,28 @@ async function filterFunction( data, filter) {
                            .replace('~','') 
                            .replace(/,/g, '')
                            .split(".").join("");
-                  console.log("salary variable = " , e[i] , "==>" , salary)
+                  console.log("salary variable = " , e[i] , "==>" , salary) 
+                  return parseInt(salary) >=parseInt(f["gte"]); 
                }
-               return parseInt(salary) >=parseInt(f["gte"]); 
-               }           
+               return  e[i]  >= f["gte"]
+               }   
+               
+            if(f["lte"]) {
+                salary =  e[i]
+               if (i === "What is your annual salary?") {
+                  let j = salary ; 
+                 salary =  j.replace('k','000')
+                           .replace('$','')
+                           .replace('£','')
+                           .replace('~','') 
+                           .replace(/,/g, '')
+                           .split(".").join("");
+                  console.log("salary variable = " , e[i] , "==>" , salary) 
+                  return parseInt(salary) < parseInt(f["lte"]); 
+               }
+               return  e[i] < f["lte"]
+               }     
+                     
             return e[i] === f;
             })   
            
